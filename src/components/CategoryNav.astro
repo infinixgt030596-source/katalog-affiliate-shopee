@@ -1,0 +1,46 @@
+---
+interface Props {
+  activeCategory: string;
+}
+const { activeCategory } = Astro.props;
+
+const categories = [
+  { id: "all", name: "Terlaris", icon: "🔥", color: "from-orange-400 to-red-500" },
+  { id: "rumah", name: "Perlengkapan Rumah", icon: "🏠", color: "from-blue-400 to-indigo-500" },
+  { id: "buku", name: "Buku & Alat Tulis", icon: "📚", color: "from-yellow-400 to-orange-500" },
+  { id: "kecantikan", name: "Perawatan & Kecantikan", icon: "✨", color: "from-pink-400 to-rose-500" },
+  { id: "makanan", name: "Makanan & Minuman", icon: "🍜", color: "from-green-400 to-emerald-500" },
+  { id: "otomotif", name: "Otomotif", icon: "🏍️", color: "from-gray-600 to-gray-800" },
+];
+---
+
+<div class="w-full overflow-x-auto pb-4 mb-6 hide-scrollbar">
+  <div class="flex gap-3 min-w-max px-1">
+    {categories.map((cat) => (
+      <button
+        data-category={cat.id}
+        class={`category-btn flex flex-col items-center justify-center w-24 h-28 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg border-2 ${
+          activeCategory === cat.id 
+            ? `bg-gradient-to-br ${cat.color} text-white border-transparent shadow-md` 
+            : "bg-white text-gray-600 border-gray-100 hover:border-orange-200"
+        }`}
+      >
+        <span class="text-3xl mb-2 drop-shadow-sm">{cat.icon}</span>
+        <span class={`text-xs font-semibold text-center leading-tight px-1 ${activeCategory === cat.id ? 'text-white' : 'text-gray-700'}`}>
+          {cat.name}
+        </span
+      </button>
+    ))}
+  </div>
+</div>
+
+<style>
+  /* Menyembunyikan scrollbar tapi tetap bisa di-scroll (untuk mobile) */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

@@ -1,37 +1,139 @@
 ---
 import ProductCard from '../components/ProductCard.astro';
+import CategoryNav from '../components/CategoryNav.astro';
 import products from '../data/products.json';
+
+// Urutkan produk berdasarkan yang paling banyak terjual untuk kategori "Terlaris"
+const sortedProducts = [...products].sort((a, b) => b.sold - a.sold);
 ---
 
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Katalog Shopee Affiliate</title>
+    <title>Racun Shopee Affiliate</title>
+    <meta name="description" content="Katalog produk affiliate Shopee pilihan dan terkurasi" />
   </head>
-  <body class="bg-gray-100 min-h-screen">
-    <header class="bg-orange-500 text-white py-4 shadow-lg sticky top-0 z-50">
+  <body class="bg-gray-50 min-h-screen font-sans">
+    
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 shadow-lg sticky top-0 z-50">
       <div class="container mx-auto px-4 flex items-center justify-between">
-        <h1 class="text-xl md:text-2xl font-bold">🛒 Racun Shopee</h1>
-        <span class="text-xs md:text-sm bg-white text-orange-500 px-3 py-1 rounded-full font-semibold">Affiliate Catalog</span>
+        <div>
+          <h1 class="text-xl md:text-2xl font-bold flex items-center gap-2">
+            🛒 Racun Shopee
+          </h1>
+          <p class="text-xs md:text-sm opacity-90 mt-1">Rekomendasi Produk Terbaik & Termurah</p>
+        </div>
+        <span class="hidden md:block text-xs bg-white text-orange-600 px-3 py-1.5 rounded-full font-bold shadow-sm">
+          Affiliate Catalog
+        </span>
       </div>
     </header>
     
-    <main class="container mx-auto px-4 py-6">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
-        🔥 Produk Trending Hari Ini
-      </h2>
+    <main class="container mx-auto px-4 py-6 max-w-6xl">
       
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
-        {products.map((product) => (
-          <ProductCard {...product} />
+      <!-- Navigasi Kategori -->
+      <CategoryNav activeCategory="all" />
+      
+      <!-- Judul Section -->
+      <div class="flex items-center justify-between mb-4">
+        <h2 id="section-title" class="text-lg font-bold text-gray-800 flex items-center gap-2">
+          🔥 Produk Terlaris Hari Ini
+        </h2>
+        <span id="product-count" class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-md font-semibold">
+          {sortedProducts.length} Produk
+        </span>
+      </div>
+      
+      <!-- Grid Produk -->
+      <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+        {sortedProducts.map((product) => (
+          <div class="product-item" data-category={product.category}>
+            <ProductCard {...product} />
+          </div>
         ))}
       </div>
+
+      <!-- Pesan jika tidak ada produk -->
+      <div id="empty-state" class="hidden text-center py-12">
+        <p class="text-4xl mb-2">🔍</p>
+        <p class="text-gray-500 font-medium">Belum ada produk di kategori ini.</p>
+      </div>
+
     </main>
 
-    <footer class="bg-white border-t mt-12 py-6 text-center text-gray-500 text-sm">
-      <p>Dibuat dengan ❤️ menggunakan Astro & Tailwind CSS</p>
-      <p class="text-xs mt-1">Link di atas adalah link affiliate. Terima kasih sudah mendukung!</p>
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-12 py-8 text-center text-gray-500 text-sm">
+      <p class="font-semibold text-gray-700">Dibuat dengan ❤️ menggunakan Astro & Tailwind CSS</p>
+      <p class="text-xs mt-2 max-w-md mx-auto">
+        Link di atas adalah link affiliate. Harga dapat berubah sewaktu-waktu sesuai ketentuan Shopee.
+      </p>
     </footer>
+
+    <!-- Script Filter Sederhana (Vanilla JS) -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('.category-btn');
+        const productItems = document.querySelectorAll('.product-item');
+        const sectionTitle = document.getElementById('section-title');
+        const productCount = document.getElementById('product-count');
+        const emptyState = document.getElementById('empty-state');
+        const productGrid = document.getElementById('product-grid');
+
+        const categoryNames = {
+          'all': '🔥 Produk Terlaris Hari Ini',
+          'rumah': '🏠 Perlengkapan Rumah Tangga',
+          'buku': '📚 Buku & Alat Tulis',
+          'kecantikan': '✨ Perawatan & Kecantikan',
+          'makanan': '🍜 Makanan & Minuman',
+          'otomotif': '🏍️ Otomotif & Aksesoris'
+        };
+
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const selectedCategory = btn.getAttribute('data-category');
+            
+            // Update tampilan tombol aktif
+            buttons.forEach(b => {
+              b.classList.remove('bg-gradient-to-br', 'from-orange-400', 'to-red-500', 'text-white', 'border-transparent', 'shadow-md');
+              b.classList.add('bg-white', 'text-gray-600', 'border-gray-100');
+              b.querySelector('span:last-child').classList.remove('text-white');
+              b.querySelector('span:last-child').classList.add('text-gray-700');
+            });
+            
+            btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-100');
+            btn.classList.add('bg-gradient-to-br', 'from-orange-400', 'to-red-500', 'text-white', 'border-transparent', 'shadow-md');
+            btn.querySelector('span:last-child').classList.remove('text-gray-700');
+            btn.querySelector('span:last-child').classList.add('text-white');
+
+            // Update Judul
+            sectionTitle.textContent = categoryNames[selectedCategory] || 'Produk';
+
+            // Filter Produk
+            let visibleCount = 0;
+            productItems.forEach(item => {
+              const itemCategory = item.getAttribute('data-category');
+              if (selectedCategory === 'all' || itemCategory === selectedCategory) {
+                item.style.display = 'block';
+                visibleCount++;
+              } else {
+                item.style.display = 'none';
+              }
+            });
+
+            // Update jumlah produk & empty state
+            productCount.textContent = `${visibleCount} Produk`;
+            if (visibleCount === 0) {
+              emptyState.classList.remove('hidden');
+              productGrid.classList.add('hidden');
+            } else {
+              emptyState.classList.add('hidden');
+              productGrid.classList.remove('hidden');
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

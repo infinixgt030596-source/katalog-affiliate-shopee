@@ -1,6 +1,7 @@
 [
   {
     "name": "Kaos Polos Premium Cotton Combed 30s Unisex",
+    "category": "fashion",
     "price": 45000,
     "originalPrice": 89000,
     "discount": 49,
@@ -9,7 +10,8 @@
     "link": "https://shopee.co.id"
   },
   {
-    "name": "Serum Vitamin C Glutathione Brightening Wajah Glowing",
+    "name": "Serum Vitamin C Glutathione Brightening Wajah",
+    "category": "kecantikan",
     "price": 75000,
     "originalPrice": 150000,
     "discount": 50,
@@ -18,7 +20,8 @@
     "link": "https://shopee.co.id"
   },
   {
-    "name": "Sepatu Sneakers Casual Pria Wanita Putih Polos",
+    "name": "Sepatu Sneakers Casual Putih Polos",
+    "category": "fashion",
     "price": 120000,
     "originalPrice": 250000,
     "discount": 52,
@@ -27,12 +30,53 @@
     "link": "https://shopee.co.id"
   },
   {
-    "name": "Tumbler Stainless Steel Tahan Panas Dingin 500ml",
+    "name": "Tumbler Stainless Steel Tahan Panas 500ml",
+    "category": "rumah",
     "price": 65000,
     "originalPrice": 130000,
     "discount": 50,
     "sold": 2100,
     "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&auto=format&fit=crop&q=60",
+    "link": "https://shopee.co.id"
+  },
+  {
+    "name": "Novel Best Seller: Laut Bercerita",
+    "category": "buku",
+    "price": 85000,
+    "originalPrice": 98000,
+    "discount": 13,
+    "sold": 5600,
+    "image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&auto=format&fit=crop&q=60",
+    "link": "https://shopee.co.id"
+  },
+  {
+    "name": "Kopi Arabika Gayo Premium 200gr",
+    "category": "makanan",
+    "price": 55000,
+    "originalPrice": 75000,
+    "discount": 26,
+    "sold": 4100,
+    "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=500&auto=format&fit=crop&q=60",
+    "link": "https://shopee.co.id"
+  },
+  {
+    "name": "Helm Bogo Retro Klasik SNI",
+    "category": "otomotif",
+    "price": 150000,
+    "originalPrice": 250000,
+    "discount": 40,
+    "sold": 780,
+    "image": "https://images.unsplash.com/photo-1558538336-d0e405065e86?w=500&auto=format&fit=crop&q=60",
+    "link": "https://shopee.co.id"
+  },
+  {
+    "name": "Set Obeng Presisi 31 in 1",
+    "category": "rumah",
+    "price": 35000,
+    "originalPrice": 70000,
+    "discount": 50,
+    "sold": 9200,
+    "image": "https://images.unsplash.com/photo-1581147036324-c17ac41dfa6c?w=500&auto=format&fit=crop&q=60",
     "link": "https://shopee.co.id"
   }
 ]
