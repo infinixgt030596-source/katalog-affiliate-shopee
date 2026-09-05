@@ -1,0 +1,51 @@
+---
+// Komponen Kartu Produk ala Shopee
+interface Props {
+  name: string;
+  price: number;
+  originalPrice?: number;
+  discount?: number;
+  sold: number;
+  image: string;
+  link: string;
+}
+const { name, price, originalPrice, discount, sold, image, link } = Astro.props;
+
+// Format harga ke Rupiah
+const formatRupiah = (angka: number) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+---
+
+<a href={link} target="_blank" rel="noopener noreferrer" class="block bg-white rounded shadow-sm hover:shadow-lg transition-shadow duration-200 overflow-hidden group">
+  <!-- Gambar Produk -->
+  <div class="relative w-full aspect-square overflow-hidden bg-gray-100">
+    <img src={image} alt={name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+    {discount && (
+      <span class="absolute top-0 right-0 bg-yellow-400 text-white text-xs font-bold px-1.5 py-0.5 rounded-bl">
+        {discount}% OFF
+      </span>
+    )}
+  </div>
+  
+  <!-- Info Produk -->
+  <div class="p-2 space-y-1">
+    <!-- Judul (Maksimal 2 baris seperti Shopee) -->
+    <h3 class="text-xs text-gray-800 line-clamp-2 min-h-[2.5rem] leading-tight">{name}</h3>
+    
+    <!-- Harga -->
+    <div class="flex items-center gap-1">
+      <span class="text-red-500 font-bold text-sm">{formatRupiah(price)}</span>
+      {originalPrice && (
+        <span class="text-gray-400 text-xs line-through">{formatRupiah(originalPrice)}</span>
+      )}
+    </div>
+    
+    <!-- Rating & Terjual -->
+    <div class="flex items-center justify-between text-xs text-gray-500">
+      <div class="flex items-center gap-0.5">
+        <span class="text-orange-400">★</span>
+        <span>4.9</span> <!-- Bisa di-dynamic nanti -->
+      </div>
+      <span>{sold} terjual</span>
+    </div>
+  </div>
+</a>
