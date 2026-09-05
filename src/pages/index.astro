@@ -5,26 +5,18 @@ import products from '../data/products.json';
 const sortedProducts = [...products].sort((a, b) => b.sold - a.sold);
 
 const categories = [
-  { id: "elektronik", name: "Elektronik", icon: "📱" },
-  { id: "komputer", name: "Komputer & Aksesoris", icon: "💻" },
-  { id: "handphone", name: "Handphone & Aksesoris", icon: "📲" },
-  { id: "fashion", name: "Pakaian Pria", icon: "👕" },
-  { id: "sepatu", name: "Sepatu Pria", icon: "👟" },
-  { id: "tas", name: "Tas Pria", icon: "🎒" },
-  { id: "aksesoris", name: "Aksesoris Fashion", icon: "🕶️" },
-  { id: "jam", name: "Jam Tangan", icon: "⌚" },
-  { id: "kesehatan", name: "Kesehatan", icon: "💊" },
-  { id: "hobi", name: "Hobi & Koleksi", icon: "🎸" },
-  { id: "makanan", name: "Makanan & Minuman", icon: "🍜" },
-  { id: "kecantikan", name: "Perawatan & Kecantikan", icon: "💄" },
-  { id: "rumah", name: "Perlengkapan Rumah", icon: "🏠" },
-  { id: "fashion-wanita", name: "Pakaian Wanita", icon: "👗" },
-  { id: "muslim", name: "Fashion Muslim", icon: "🧕" },
-  { id: "bayi", name: "Fashion Bayi & Anak", icon: "👶" },
-  { id: "ibu", name: "Ibu & Bayi", icon: "🍼" },
-  { id: "sepatu-wanita", name: "Sepatu Wanita", icon: "👠" },
-  { id: "tas-wanita", name: "Tas Wanita", icon: "👜" },
-  { id: "otomotif", name: "Otomotif", icon: "️" },
+  { id: "elektronik", name: "Elektronik", icon: "smartphone" },
+  { id: "komputer", name: "Komputer", icon: "laptop" },
+  { id: "handphone", name: "Handphone", icon: "phone" },
+  { id: "fashion", name: "Fashion Pria", icon: "shirt" },
+  { id: "sepatu", name: "Sepatu", icon: "shoe" },
+  { id: "tas", name: "Tas", icon: "bag" },
+  { id: "aksesoris", name: "Aksesoris", icon: "watch" },
+  { id: "jam", name: "Jam Tangan", icon: "clock" },
+  { id: "kesehatan", name: "Kesehatan", icon: "heart" },
+  { id: "makanan", name: "Makanan", icon: "food" },
+  { id: "kecantikan", name: "Kecantikan", icon: "sparkle" },
+  { id: "rumah", name: "Rumah Tangga", icon: "home" },
 ];
 ---
 
@@ -32,125 +24,185 @@ const categories = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Racun Shopee - Katalog Affiliate</title>
+    <title>Racun Shopee - Katalog Affiliate Terbaik</title>
     <meta name="description" content="Katalog produk affiliate Shopee pilihan dan terkurasi" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-gray-100 min-h-screen font-sans">
+  <body class="bg-gray-50 min-h-screen font-sans" style="font-family: 'Inter', sans-serif;">
     
-    <!-- Header dengan Search Bar (Mirip Shopee) -->
-    <header class="bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg sticky top-0 z-50">
-      <div class="container mx-auto px-4 py-3">
-        <div class="flex items-center gap-4">
-          <h1 class="text-xl md:text-2xl font-bold flex-shrink-0">🛒 Racun Shopee</h1>
+    <!-- Header dengan Search Bar -->
+    <header class="bg-gradient-to-r from-#ee4d2d via-#ff6b4a to-#ff8a65 text-white shadow-xl sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center gap-4 max-w-7xl mx-auto">
+          <div class="flex-shrink-0">
+            <h1 class="text-2xl md:text-3xl font-extrabold flex items-center gap-2 drop-shadow-lg">
+              <span class="text-3xl">🛍️</span>
+              <span>Racun Shopee</span>
+            </h1>
+            <p class="text-xs opacity-90 mt-0.5">Produk Affiliate Terbaik</p>
+          </div>
           
-          <!-- Search Bar -->
-          <div class="flex-1 max-w-2xl">
+          <div class="flex-1 max-w-3xl">
             <div class="relative">
               <input 
                 type="text" 
                 id="search-input"
-                placeholder="Cari produk affiliate..." 
-                class="w-full px-4 py-2 rounded-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-300"
+                placeholder="Cari produk favoritmu..." 
+                class="w-full px-5 py-3 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-4 focus:ring-orange-300/50 shadow-lg"
               />
-              <button class="absolute right-0 top-0 h-full px-6 bg-orange-600 hover:bg-orange-700 rounded-r-sm transition-colors">
-                🔍
+              <button class="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 rounded-md font-semibold transition-all shadow-md hover:shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
               </button>
             </div>
+          </div>
+
+          <div class="hidden lg:flex items-center gap-3">
+            <button class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg font-semibold transition-all backdrop-blur-sm">
+              🛒 Keranjang
+            </button>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Banner Hero (Promo Besar) -->
-    <section class="bg-white shadow-sm">
-      <div class="container mx-auto px-4 py-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <!-- Banner Utama -->
-          <div class="bg-gradient-to-br from-orange-400 via-red-400 to-pink-500 rounded-lg p-8 text-white relative overflow-hidden cursor-pointer hover:shadow-lg transition-shadow">
-            <div class="relative z-10">
-              <h2 class="text-3xl md:text-4xl font-bold mb-2">Shopee Pilih Lokal</h2>
-              <p class="text-lg mb-4">Rumah Produk Lokal No. 1 di Indonesia</p>
-              <button class="bg-white text-orange-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                Belanja Sekarang
-              </button>
-            </div>
-            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-32 -mt-32"></div>
-            <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-10 rounded-full -ml-24 -mb-24"></div>
-          </div>
-
-          <!-- Banner Kedua -->
-          <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg p-8 text-white relative overflow-hidden cursor-pointer hover:shadow-lg transition-shadow">
-            <div class="relative z-10">
-              <h2 class="text-3xl md:text-4xl font-bold mb-2">Shopee Mall</h2>
-              <p class="text-lg mb-4">100% ORI • Gratis Ongkir</p>
-              <div class="flex gap-2">
-                <span class="bg-white text-blue-600 px-3 py-1 rounded text-sm font-semibold">Diskon 80%</span>
-                <span class="bg-white text-blue-600 px-3 py-1 rounded text-sm font-semibold">Voucher 100RB</span>
+    <!-- Hero Banner dengan Gambar -->
+    <section class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-64 md:h-80">
+          <div class="relative rounded-2xl overflow-hidden group cursor-pointer shadow-xl">
+            <img 
+              src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&auto=format&fit=crop&q=80" 
+              alt="Shopee Pilih Lokal" 
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-orange-600/90 to-red-600/70 flex items-center p-8">
+              <div class="text-white">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-3 drop-shadow-lg">Shopee Pilih Lokal</h2>
+                <p class="text-lg mb-4 font-medium">Rumah Produk Lokal No. 1 di Indonesia</p>
+                <button class="bg-white text-orange-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:scale-105">
+                  Belanja Sekarang →
+                </button>
               </div>
             </div>
-            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-32 -mt-32"></div>
+          </div>
+
+          <div class="relative rounded-2xl overflow-hidden group cursor-pointer shadow-xl">
+            <img 
+              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop&q=80" 
+              alt="Shopee Mall" 
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-purple-600/70 flex items-center p-8">
+              <div class="text-white">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-3 drop-shadow-lg">Shopee Mall</h2>
+                <p class="text-lg mb-4 font-medium">100% Original • Gratis Ongkir</p>
+                <div class="flex gap-3">
+                  <span class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-bold shadow-lg">Diskon 80%</span>
+                  <span class="bg-white text-blue-600 px-4 py-2 rounded-full font-bold shadow-lg">Voucher 100RB</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Menu Icon (Seperti Shopee) -->
-    <section class="bg-white shadow-sm border-b">
-      <div class="container mx-auto px-4 py-4">
-        <div class="grid grid-cols-4 md:grid-cols-8 gap-4 text-center">
-          <div class="cursor-pointer hover:opacity-70 transition-opacity">
-            <div class="text-3xl mb-1">🏪</div>
-            <p class="text-xs text-gray-700">Shopee Pilih Lokal</p>
+    <!-- Menu Icons dengan SVG Profesional -->
+    <section class="bg-white shadow-sm border-b mt-4">
+      <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <div class="grid grid-cols-4 md:grid-cols-8 gap-4">
+          <div class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-14 h-14 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+            </div>
+            <span class="text-xs font-medium text-gray-700 group-hover:text-orange-600 transition-colors text-center">Shopee Lokal</span>
           </div>
-          <div class="cursor-pointer hover:opacity-70 transition-opacity">
-            <div class="text-3xl mb-1">🏬</div>
-            <p class="text-xs text-gray-700">Shopee Mall</p>
+
+          <div class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+            </div>
+            <span class="text-xs font-medium text-gray-700 group-hover:text-blue-600 transition-colors text-center">Shopee Mall</span>
           </div>
-          <div class="cursor-pointer hover:opacity-70 transition-opacity">
-            <div class="text-3xl mb-1">⚡</div>
-            <p class="text-xs text-gray-700">Flash Sale</p>
+
+          <div class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <span class="text-xs font-medium text-gray-700 group-hover:text-yellow-600 transition-colors text-center">Flash Sale</span>
           </div>
-          <div class="cursor-pointer hover:opacity-70 transition-opacity">
-            <div class="text-3xl mb-1">🎟️</div>
-            <p class="text-xs text-gray-700">Gratis Ongkir</p>
+
+          <div class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span class="text-xs font-medium text-gray-700 group-hover:text-green-600 transition-colors text-center">Gratis Ongkir</span>
           </div>
-          <div class="cursor-pointer hover:opacity-70 transition-opacity">
-            <div class="text-3xl mb-1">💰</div>
-            <p class="text-xs text-gray-700">ShopeePay</p>
+
+          <div class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+            </div>
+            <span class="text-xs font-medium text-gray-700 group-hover:text-purple-600 transition-colors text-center">ShopeePay</span>
           </div>
-          <div class="cursor-pointer hover:opacity-70 transition-opacity">
-            <div class="text-3xl mb-1">🎮</div>
-            <p class="text-xs text-gray-700">Shopee Games</p>
+
+          <div class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-14 h-14 bg-gradient-to-br from-red-400 to-pink-500 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <span class="text-xs font-medium text-gray-700 group-hover:text-red-600 transition-colors text-center">Shopee Games</span>
           </div>
-          <div class="cursor-pointer hover:opacity-70 transition-opacity">
-            <div class="text-3xl mb-1">📱</div>
-            <p class="text-xs text-gray-700">Pulsa & Tagihan</p>
+
+          <div class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+            </div>
+            <span class="text-xs font-medium text-gray-700 group-hover:text-cyan-600 transition-colors text-center">Pulsa & Tagihan</span>
           </div>
-          <div class="cursor-pointer hover:opacity-70 transition-opacity">
-            <div class="text-3xl mb-1"></div>
-            <p class="text-xs text-gray-700">Semua Promo</p>
+
+          <div class="flex flex-col items-center gap-2 cursor-pointer group">
+            <div class="w-14 h-14 bg-gradient-to-br from-pink-400 to-rose-500 rounded-2xl flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
+            </div>
+            <span class="text-xs font-medium text-gray-700 group-hover:text-pink-600 transition-colors text-center">Semua Promo</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Kategori Grid (Mirip Shopee) -->
+    <!-- Kategori dengan SVG Icons -->
     <section class="bg-white shadow-sm mt-4">
-      <div class="container mx-auto px-4 py-6">
-        <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-          📂 KATEGORI
-        </h2>
+      <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+            <span class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1 rounded-lg text-sm">KATEGORI</span>
+          </h2>
+          <a href="#" class="text-orange-600 font-semibold hover:underline text-sm">Lihat Semua →</a>
+        </div>
         
-        <div class="grid grid-cols-4 md:grid-cols-10 gap-4">
+        <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-3">
           {categories.map((cat) => (
             <button
               data-category={cat.id}
-              class="category-btn flex flex-col items-center justify-center p-3 rounded-lg hover:bg-gray-50 transition-colors border border-gray-100 hover:border-orange-300 group"
+              class="category-btn flex flex-col items-center justify-center p-4 rounded-xl hover:bg-gradient-to-br hover:from-orange-50 hover:to-red-50 transition-all border-2 border-transparent hover:border-orange-200 group cursor-pointer"
             >
-              <div class="text-4xl mb-2 group-hover:scale-110 transition-transform">
-                {cat.icon}
+              <div class="w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 group-hover:from-orange-400 group-hover:to-red-500 rounded-full flex items-center justify-center mb-2 transition-all group-hover:scale-110 shadow-sm group-hover:shadow-md">
+                {cat.icon === "smartphone" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>}
+                {cat.icon === "laptop" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>}
+                {cat.icon === "phone" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>}
+                {cat.icon === "shirt" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6zM3 6h18M16 2a2 2 0 012 2"></path></svg>}
+                {cat.icon === "shoe" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>}
+                {cat.icon === "bag" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>}
+                {cat.icon === "watch" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>}
+                {cat.icon === "clock" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>}
+                {cat.icon === "heart" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>}
+                {cat.icon === "food" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 4a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>}
+                {cat.icon === "sparkle" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>}
+                {cat.icon === "home" && <svg class="w-6 h-6 text-gray-700 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>}
               </div>
-              <p class="text-xs text-gray-700 text-center leading-tight group-hover:text-orange-600 transition-colors">
+              <p class="text-xs font-medium text-gray-700 group-hover:text-orange-600 transition-colors text-center leading-tight">
                 {cat.name}
               </p>
             </button>
@@ -160,30 +212,40 @@ const categories = [
     </section>
 
     <!-- Flash Sale Section -->
-    <section class="bg-white shadow-sm mt-4">
-      <div class="container mx-auto px-4 py-6">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-            ⚡ FLASH SALE
-          </h2>
-          <div class="flex items-center gap-2">
-            <span class="text-sm text-gray-600">Berakhir dalam:</span>
-            <div id="countdown" class="flex gap-1">
-              <span class="bg-red-600 text-white px-2 py-1 rounded font-bold text-sm" id="hours">00</span>
-              <span class="text-red-600 font-bold">:</span>
-              <span class="bg-red-600 text-white px-2 py-1 rounded font-bold text-sm" id="minutes">00</span>
-              <span class="text-red-600 font-bold">:</span>
-              <span class="bg-red-600 text-white px-2 py-1 rounded font-bold text-sm" id="seconds">00</span>
+    <section class="bg-gradient-to-r from-red-50 to-orange-50 shadow-sm mt-4 border-2 border-red-100">
+      <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <h2 class="text-2xl font-extrabold text-red-600 flex items-center gap-2">
+              ⚡ FLASH SALE
+            </h2>
+            <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md">
+              <span class="text-sm font-semibold text-gray-700">Berakhir dalam:</span>
+              <div class="flex gap-1" id="countdown">
+                <span class="bg-red-600 text-white px-2.5 py-1 rounded-md font-bold text-sm" id="hours">00</span>
+                <span class="text-red-600 font-bold">:</span>
+                <span class="bg-red-600 text-white px-2.5 py-1 rounded-md font-bold text-sm" id="minutes">00</span>
+                <span class="text-red-600 font-bold">:</span>
+                <span class="bg-red-600 text-white px-2.5 py-1 rounded-md font-bold text-sm" id="seconds">00</span>
+              </div>
             </div>
           </div>
-          <a href="#" class="text-orange-600 text-sm font-semibold hover:underline">Lihat Semua ></a>
+          <a href="#" class="text-orange-600 font-bold hover:underline flex items-center gap-1">
+            Lihat Semua 
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          {sortedProducts.slice(0, 6).map((product) => (
-            <div class="relative">
-              <div class="absolute top-0 left-0 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs px-2 py-1 rounded-br-lg font-bold z-10">
-                {product.discount}% OFF
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {sortedProducts.slice(0, 6).map((product, index) => (
+            <div class="relative group">
+              {product.discount && product.discount > 40 && (
+                <div class="absolute -top-2 -left-2 bg-gradient-to-r from-red-600 to-orange-600 text-white text-xs font-bold px-3 py-1.5 rounded-full z-20 shadow-lg animate-pulse">
+                  {product.discount}% OFF
+                </div>
+              )}
+              <div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md z-10 shadow-md">
+                {Math.floor(Math.random() * 50 + 10)}% Terjual
               </div>
               <ProductCard {...product} />
             </div>
@@ -194,12 +256,17 @@ const categories = [
 
     <!-- Produk Terlaris -->
     <section class="bg-white shadow-sm mt-4 mb-8">
-      <div class="container mx-auto px-4 py-6">
-        <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-          🔥 PRODUK TERLARIS
-        </h2>
+      <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <div class="flex items-center justify-between mb-6">
+          <h2 id="section-title" class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+            <span class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-1.5 rounded-lg">🔥 PRODUK TERLARIS</span>
+          </h2>
+          <span id="product-count" class="bg-orange-100 text-orange-700 px-4 py-2 rounded-full font-bold text-sm">
+            {sortedProducts.length} Produk
+          </span>
+        </div>
         
-        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {sortedProducts.map((product) => (
             <div class="product-item" data-category={product.category}>
               <ProductCard {...product} />
@@ -207,19 +274,70 @@ const categories = [
           ))}
         </div>
 
-        <div id="empty-state" class="hidden text-center py-12">
-          <p class="text-4xl mb-2">🔍</p>
-          <p class="text-gray-500 font-medium">Belum ada produk di kategori ini.</p>
+        <div id="empty-state" class="hidden text-center py-16 bg-gray-50 rounded-2xl mt-4">
+          <div class="text-6xl mb-4">🔍</div>
+          <p class="text-gray-600 font-semibold text-lg">Belum ada produk di kategori ini.</p>
+          <p class="text-gray-400 text-sm mt-2">Coba pilih kategori lain atau cek kembali nanti!</p>
+        </div>
+
+        <div class="mt-8 text-center">
+          <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all transform hover:scale-105">
+            Muat Lebih Banyak
+          </button>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t mt-12 py-8 text-center text-gray-500 text-sm">
-      <p class="font-semibold text-gray-700">Dibuat dengan ❤️ menggunakan Astro & Tailwind CSS</p>
-      <p class="text-xs mt-2 max-w-md mx-auto">
-        Link di atas adalah link affiliate. Harga dapat berubah sewaktu-waktu sesuai ketentuan Shopee.
-      </p>
+    <footer class="bg-gradient-to-b from-gray-800 to-gray-900 text-white mt-12">
+      <div class="container mx-auto px-4 py-12 max-w-7xl">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+              <span>🛍️</span> Racun Shopee
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Katalog produk affiliate Shopee pilihan dan terkurasi untuk memudahkan kamu menemukan produk terbaik.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3">Kategori Populer</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-orange-400 transition-colors">Elektronik</a></li>
+              <li><a href="#" class="hover:text-orange-400 transition-colors">Fashion</a></li>
+              <li><a href="#" class="hover:text-orange-400 transition-colors">Kecantikan</a></li>
+              <li><a href="#" class="hover:text-orange-400 transition-colors">Rumah Tangga</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3">Tentang</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-orange-400 transition-colors">Cara Kerja</a></li>
+              <li><a href="#" class="hover:text-orange-400 transition-colors">Kebijakan Privasi</a></li>
+              <li><a href="#" class="hover:text-orange-400 transition-colors">Syarat & Ketentuan</a></li>
+              <li><a href="#" class="hover:text-orange-400 transition-colors">Hubungi Kami</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3">Ikuti Kami</h4>
+            <div class="flex gap-3">
+              <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-orange-500 rounded-full flex items-center justify-center transition-all">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-orange-500 rounded-full flex items-center justify-center transition-all">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+              </a>
+              <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-orange-500 rounded-full flex items-center justify-center transition-all">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+          <p>© 2024 Racun Shopee. Dibuat dengan ❤️ menggunakan Astro & Tailwind CSS</p>
+          <p class="mt-2">Link di atas adalah link affiliate. Harga dapat berubah sewaktu-waktu.</p>
+        </div>
+      </div>
     </footer>
 
     <!-- Scripts -->
@@ -250,6 +368,19 @@ const categories = [
         const productItems = document.querySelectorAll('.product-item');
         const emptyState = document.getElementById('empty-state');
         const productGrid = document.getElementById('product-grid');
+        const sectionTitle = document.getElementById('section-title');
+        const productCount = document.getElementById('product-count');
+
+        const categoryNames = {
+          'all': '🔥 PRODUK TERLARIS',
+          'rumah': '🏠 PERLENGKAPAN RUMAH',
+          'buku': ' BUKU & ALAT TULIS',
+          'kecantikan': ' PERAWATAN & KECANTIKAN',
+          'makanan': '🍜 MAKANAN & MINUMAN',
+          'otomotif': '🏍️ OTOMOTIF',
+          'elektronik': '📱 ELEKTRONIK',
+          'fashion': '👕 FASHION',
+        };
 
         categoryButtons.forEach(btn => {
           btn.addEventListener('click', () => {
@@ -257,17 +388,21 @@ const categories = [
             
             // Reset semua tombol
             categoryButtons.forEach(b => {
-              b.classList.remove('bg-orange-50', 'border-orange-500');
+              b.classList.remove('bg-gradient-to-br', 'from-orange-50', 'to-red-50', 'border-orange-200');
             });
             
             // Highlight tombol yang diklik
-            btn.classList.add('bg-orange-50', 'border-orange-500');
+            btn.classList.add('bg-gradient-to-br', 'from-orange-50', 'to-red-50', 'border-orange-200');
+
+            // Update judul
+            const categoryName = categoryNames[selectedCategory] || 'PRODUK';
+            sectionTitle.innerHTML = `<span class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-1.5 rounded-lg">${categoryName}</span>`;
 
             // Filter produk
             let visibleCount = 0;
             productItems.forEach(item => {
               const itemCategory = item.getAttribute('data-category');
-              if (selectedCategory === itemCategory) {
+              if (selectedCategory === 'all' || itemCategory === selectedCategory) {
                 item.style.display = 'block';
                 visibleCount++;
               } else {
@@ -275,7 +410,8 @@ const categories = [
               }
             });
 
-            // Tampilkan/sembunyikan empty state
+            // Update jumlah produk & empty state
+            productCount.textContent = `${visibleCount} Produk`;
             if (visibleCount === 0) {
               emptyState.classList.remove('hidden');
               productGrid.classList.add('hidden');
@@ -305,6 +441,7 @@ const categories = [
             }
           });
 
+          productCount.textContent = `${visibleCount} Produk`;
           if (visibleCount === 0 && searchTerm !== '') {
             emptyState.classList.remove('hidden');
             productGrid.classList.add('hidden');
