@@ -14,32 +14,44 @@ const formatRupiah = (angka: number) =>
   new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 ---
 
-<a href={link} target="_blank" rel="noopener noreferrer" class="block bg-white rounded shadow-sm hover:shadow-lg transition-shadow duration-200 overflow-hidden group border border-gray-100">
+<a href={link} target="_blank" rel="noopener noreferrer" class="block bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden group border border-gray-100">
   <div class="relative w-full aspect-square overflow-hidden bg-gray-100">
     <img src={image} alt={name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
     {discount && (
-      <span class="absolute top-0 right-0 bg-yellow-400 text-white text-xs font-bold px-1.5 py-0.5 rounded-bl">
+      <div class="absolute top-0 right-0 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold px-2 py-1">
         {discount}% OFF
-      </span>
+      </div>
     )}
   </div>
   
-  <div class="p-3 space-y-1.5">
-    <h3 class="text-xs text-gray-800 line-clamp-2 min-h-[2.5rem] leading-tight">{name}</h3>
+  <div class="p-3 space-y-2">
+    <h3 class="text-xs text-gray-800 line-clamp-2 min-h-[2.5rem] leading-tight group-hover:text-orange-600 transition-colors">{name}</h3>
     
-    <div class="flex items-center gap-1.5">
-      <span class="text-red-500 font-bold text-sm">{formatRupiah(price)}</span>
+    <div class="flex items-baseline gap-2">
+      <span class="text-red-600 font-bold text-base">{formatRupiah(price)}</span>
       {originalPrice && (
         <span class="text-gray-400 text-xs line-through">{formatRupiah(originalPrice)}</span>
       )}
     </div>
     
-    <div class="flex items-center justify-between text-xs text-gray-500">
-      <div class="flex items-center gap-0.5">
-        <span class="text-orange-400">★</span>
-        <span>4.9</span>
+    <div class="flex items-center justify-between text-xs">
+      <div class="flex items-center gap-1">
+        <div class="flex text-orange-400">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <span class="text-gray-500 ml-1">4.9</span>
       </div>
-      <span>{sold} terjual</span>
+      <span class="text-gray-500">{sold} terjual</span>
     </div>
+
+    {discount && discount > 40 && (
+      <div class="flex items-center gap-1 pt-1 border-t border-gray-100">
+        <span class="bg-red-100 text-red-600 text-xs px-2 py-0.5 rounded font-semibold">Flash Sale</span>
+        <div class="flex-1 bg-gray-200 rounded-full h-1.5 overflow-hidden">
+          <div class="bg-gradient-to-r from-red-500 to-orange-500 h-full rounded-full" style="width: {Math.min(discount, 100)}%"></div>
+        </div>
+        <span class="text-xs text-gray-500">{Math.floor(Math.random() * 50 + 10)} terjual</span>
+      </div>
+    )}
   </div>
 </a>

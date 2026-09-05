@@ -1,67 +1,218 @@
 ---
 import ProductCard from '../components/ProductCard.astro';
-import CategoryNav from '../components/CategoryNav.astro';
 import products from '../data/products.json';
 
-// Urutkan produk berdasarkan yang paling banyak terjual untuk kategori "Terlaris"
 const sortedProducts = [...products].sort((a, b) => b.sold - a.sold);
+
+const categories = [
+  { id: "elektronik", name: "Elektronik", icon: "📱" },
+  { id: "komputer", name: "Komputer & Aksesoris", icon: "💻" },
+  { id: "handphone", name: "Handphone & Aksesoris", icon: "📲" },
+  { id: "fashion", name: "Pakaian Pria", icon: "👕" },
+  { id: "sepatu", name: "Sepatu Pria", icon: "👟" },
+  { id: "tas", name: "Tas Pria", icon: "🎒" },
+  { id: "aksesoris", name: "Aksesoris Fashion", icon: "🕶️" },
+  { id: "jam", name: "Jam Tangan", icon: "⌚" },
+  { id: "kesehatan", name: "Kesehatan", icon: "💊" },
+  { id: "hobi", name: "Hobi & Koleksi", icon: "🎸" },
+  { id: "makanan", name: "Makanan & Minuman", icon: "🍜" },
+  { id: "kecantikan", name: "Perawatan & Kecantikan", icon: "💄" },
+  { id: "rumah", name: "Perlengkapan Rumah", icon: "🏠" },
+  { id: "fashion-wanita", name: "Pakaian Wanita", icon: "👗" },
+  { id: "muslim", name: "Fashion Muslim", icon: "🧕" },
+  { id: "bayi", name: "Fashion Bayi & Anak", icon: "👶" },
+  { id: "ibu", name: "Ibu & Bayi", icon: "🍼" },
+  { id: "sepatu-wanita", name: "Sepatu Wanita", icon: "👠" },
+  { id: "tas-wanita", name: "Tas Wanita", icon: "👜" },
+  { id: "otomotif", name: "Otomotif", icon: "️" },
+];
 ---
 
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Racun Shopee Affiliate</title>
+    <title>Racun Shopee - Katalog Affiliate</title>
     <meta name="description" content="Katalog produk affiliate Shopee pilihan dan terkurasi" />
   </head>
-  <body class="bg-gray-50 min-h-screen font-sans">
+  <body class="bg-gray-100 min-h-screen font-sans">
     
-    <!-- Header -->
-    <header class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 shadow-lg sticky top-0 z-50">
-      <div class="container mx-auto px-4 flex items-center justify-between">
-        <div>
-          <h1 class="text-xl md:text-2xl font-bold flex items-center gap-2">
-            🛒 Racun Shopee
-          </h1>
-          <p class="text-xs md:text-sm opacity-90 mt-1">Rekomendasi Produk Terbaik & Termurah</p>
+    <!-- Header dengan Search Bar (Mirip Shopee) -->
+    <header class="bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex items-center gap-4">
+          <h1 class="text-xl md:text-2xl font-bold flex-shrink-0">🛒 Racun Shopee</h1>
+          
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-2xl">
+            <div class="relative">
+              <input 
+                type="text" 
+                id="search-input"
+                placeholder="Cari produk affiliate..." 
+                class="w-full px-4 py-2 rounded-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              />
+              <button class="absolute right-0 top-0 h-full px-6 bg-orange-600 hover:bg-orange-700 rounded-r-sm transition-colors">
+                🔍
+              </button>
+            </div>
+          </div>
         </div>
-        <span class="hidden md:block text-xs bg-white text-orange-600 px-3 py-1.5 rounded-full font-bold shadow-sm">
-          Affiliate Catalog
-        </span>
       </div>
     </header>
-    
-    <main class="container mx-auto px-4 py-6 max-w-6xl">
-      
-      <!-- Navigasi Kategori -->
-      <CategoryNav activeCategory="all" />
-      
-      <!-- Judul Section -->
-      <div class="flex items-center justify-between mb-4">
-        <h2 id="section-title" class="text-lg font-bold text-gray-800 flex items-center gap-2">
-          🔥 Produk Terlaris Hari Ini
-        </h2>
-        <span id="product-count" class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-md font-semibold">
-          {sortedProducts.length} Produk
-        </span>
-      </div>
-      
-      <!-- Grid Produk -->
-      <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
-        {sortedProducts.map((product) => (
-          <div class="product-item" data-category={product.category}>
-            <ProductCard {...product} />
+
+    <!-- Banner Hero (Promo Besar) -->
+    <section class="bg-white shadow-sm">
+      <div class="container mx-auto px-4 py-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Banner Utama -->
+          <div class="bg-gradient-to-br from-orange-400 via-red-400 to-pink-500 rounded-lg p-8 text-white relative overflow-hidden cursor-pointer hover:shadow-lg transition-shadow">
+            <div class="relative z-10">
+              <h2 class="text-3xl md:text-4xl font-bold mb-2">Shopee Pilih Lokal</h2>
+              <p class="text-lg mb-4">Rumah Produk Lokal No. 1 di Indonesia</p>
+              <button class="bg-white text-orange-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                Belanja Sekarang
+              </button>
+            </div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-32 -mt-32"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-10 rounded-full -ml-24 -mb-24"></div>
           </div>
-        ))}
-      </div>
 
-      <!-- Pesan jika tidak ada produk -->
-      <div id="empty-state" class="hidden text-center py-12">
-        <p class="text-4xl mb-2">🔍</p>
-        <p class="text-gray-500 font-medium">Belum ada produk di kategori ini.</p>
+          <!-- Banner Kedua -->
+          <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg p-8 text-white relative overflow-hidden cursor-pointer hover:shadow-lg transition-shadow">
+            <div class="relative z-10">
+              <h2 class="text-3xl md:text-4xl font-bold mb-2">Shopee Mall</h2>
+              <p class="text-lg mb-4">100% ORI • Gratis Ongkir</p>
+              <div class="flex gap-2">
+                <span class="bg-white text-blue-600 px-3 py-1 rounded text-sm font-semibold">Diskon 80%</span>
+                <span class="bg-white text-blue-600 px-3 py-1 rounded text-sm font-semibold">Voucher 100RB</span>
+              </div>
+            </div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-32 -mt-32"></div>
+          </div>
+        </div>
       </div>
+    </section>
 
-    </main>
+    <!-- Menu Icon (Seperti Shopee) -->
+    <section class="bg-white shadow-sm border-b">
+      <div class="container mx-auto px-4 py-4">
+        <div class="grid grid-cols-4 md:grid-cols-8 gap-4 text-center">
+          <div class="cursor-pointer hover:opacity-70 transition-opacity">
+            <div class="text-3xl mb-1">🏪</div>
+            <p class="text-xs text-gray-700">Shopee Pilih Lokal</p>
+          </div>
+          <div class="cursor-pointer hover:opacity-70 transition-opacity">
+            <div class="text-3xl mb-1">🏬</div>
+            <p class="text-xs text-gray-700">Shopee Mall</p>
+          </div>
+          <div class="cursor-pointer hover:opacity-70 transition-opacity">
+            <div class="text-3xl mb-1">⚡</div>
+            <p class="text-xs text-gray-700">Flash Sale</p>
+          </div>
+          <div class="cursor-pointer hover:opacity-70 transition-opacity">
+            <div class="text-3xl mb-1">🎟️</div>
+            <p class="text-xs text-gray-700">Gratis Ongkir</p>
+          </div>
+          <div class="cursor-pointer hover:opacity-70 transition-opacity">
+            <div class="text-3xl mb-1">💰</div>
+            <p class="text-xs text-gray-700">ShopeePay</p>
+          </div>
+          <div class="cursor-pointer hover:opacity-70 transition-opacity">
+            <div class="text-3xl mb-1">🎮</div>
+            <p class="text-xs text-gray-700">Shopee Games</p>
+          </div>
+          <div class="cursor-pointer hover:opacity-70 transition-opacity">
+            <div class="text-3xl mb-1">📱</div>
+            <p class="text-xs text-gray-700">Pulsa & Tagihan</p>
+          </div>
+          <div class="cursor-pointer hover:opacity-70 transition-opacity">
+            <div class="text-3xl mb-1"></div>
+            <p class="text-xs text-gray-700">Semua Promo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kategori Grid (Mirip Shopee) -->
+    <section class="bg-white shadow-sm mt-4">
+      <div class="container mx-auto px-4 py-6">
+        <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+          📂 KATEGORI
+        </h2>
+        
+        <div class="grid grid-cols-4 md:grid-cols-10 gap-4">
+          {categories.map((cat) => (
+            <button
+              data-category={cat.id}
+              class="category-btn flex flex-col items-center justify-center p-3 rounded-lg hover:bg-gray-50 transition-colors border border-gray-100 hover:border-orange-300 group"
+            >
+              <div class="text-4xl mb-2 group-hover:scale-110 transition-transform">
+                {cat.icon}
+              </div>
+              <p class="text-xs text-gray-700 text-center leading-tight group-hover:text-orange-600 transition-colors">
+                {cat.name}
+              </p>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Flash Sale Section -->
+    <section class="bg-white shadow-sm mt-4">
+      <div class="container mx-auto px-4 py-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+            ⚡ FLASH SALE
+          </h2>
+          <div class="flex items-center gap-2">
+            <span class="text-sm text-gray-600">Berakhir dalam:</span>
+            <div id="countdown" class="flex gap-1">
+              <span class="bg-red-600 text-white px-2 py-1 rounded font-bold text-sm" id="hours">00</span>
+              <span class="text-red-600 font-bold">:</span>
+              <span class="bg-red-600 text-white px-2 py-1 rounded font-bold text-sm" id="minutes">00</span>
+              <span class="text-red-600 font-bold">:</span>
+              <span class="bg-red-600 text-white px-2 py-1 rounded font-bold text-sm" id="seconds">00</span>
+            </div>
+          </div>
+          <a href="#" class="text-orange-600 text-sm font-semibold hover:underline">Lihat Semua ></a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          {sortedProducts.slice(0, 6).map((product) => (
+            <div class="relative">
+              <div class="absolute top-0 left-0 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs px-2 py-1 rounded-br-lg font-bold z-10">
+                {product.discount}% OFF
+              </div>
+              <ProductCard {...product} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Produk Terlaris -->
+    <section class="bg-white shadow-sm mt-4 mb-8">
+      <div class="container mx-auto px-4 py-6">
+        <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+          🔥 PRODUK TERLARIS
+        </h2>
+        
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+          {sortedProducts.map((product) => (
+            <div class="product-item" data-category={product.category}>
+              <ProductCard {...product} />
+            </div>
+          ))}
+        </div>
+
+        <div id="empty-state" class="hidden text-center py-12">
+          <p class="text-4xl mb-2">🔍</p>
+          <p class="text-gray-500 font-medium">Belum ada produk di kategori ini.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-white border-t mt-12 py-8 text-center text-gray-500 text-sm">
@@ -71,50 +222,52 @@ const sortedProducts = [...products].sort((a, b) => b.sold - a.sold);
       </p>
     </footer>
 
-    <!-- Script Filter Sederhana (Vanilla JS) -->
+    <!-- Scripts -->
     <script>
+      // Countdown Timer untuk Flash Sale
+      function updateCountdown() {
+        const now = new Date();
+        const endOfDay = new Date();
+        endOfDay.setHours(23, 59, 59, 999);
+        
+        const diff = endOfDay - now;
+        
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+      }
+      
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // Filter Kategori
       document.addEventListener('DOMContentLoaded', () => {
-        const buttons = document.querySelectorAll('.category-btn');
+        const categoryButtons = document.querySelectorAll('.category-btn');
         const productItems = document.querySelectorAll('.product-item');
-        const sectionTitle = document.getElementById('section-title');
-        const productCount = document.getElementById('product-count');
         const emptyState = document.getElementById('empty-state');
         const productGrid = document.getElementById('product-grid');
 
-        const categoryNames = {
-          'all': '🔥 Produk Terlaris Hari Ini',
-          'rumah': '🏠 Perlengkapan Rumah Tangga',
-          'buku': '📚 Buku & Alat Tulis',
-          'kecantikan': '✨ Perawatan & Kecantikan',
-          'makanan': '🍜 Makanan & Minuman',
-          'otomotif': '🏍️ Otomotif & Aksesoris'
-        };
-
-        buttons.forEach(btn => {
+        categoryButtons.forEach(btn => {
           btn.addEventListener('click', () => {
             const selectedCategory = btn.getAttribute('data-category');
             
-            // Update tampilan tombol aktif
-            buttons.forEach(b => {
-              b.classList.remove('bg-gradient-to-br', 'from-orange-400', 'to-red-500', 'text-white', 'border-transparent', 'shadow-md');
-              b.classList.add('bg-white', 'text-gray-600', 'border-gray-100');
-              b.querySelector('span:last-child').classList.remove('text-white');
-              b.querySelector('span:last-child').classList.add('text-gray-700');
+            // Reset semua tombol
+            categoryButtons.forEach(b => {
+              b.classList.remove('bg-orange-50', 'border-orange-500');
             });
             
-            btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-100');
-            btn.classList.add('bg-gradient-to-br', 'from-orange-400', 'to-red-500', 'text-white', 'border-transparent', 'shadow-md');
-            btn.querySelector('span:last-child').classList.remove('text-gray-700');
-            btn.querySelector('span:last-child').classList.add('text-white');
+            // Highlight tombol yang diklik
+            btn.classList.add('bg-orange-50', 'border-orange-500');
 
-            // Update Judul
-            sectionTitle.textContent = categoryNames[selectedCategory] || 'Produk';
-
-            // Filter Produk
+            // Filter produk
             let visibleCount = 0;
             productItems.forEach(item => {
               const itemCategory = item.getAttribute('data-category');
-              if (selectedCategory === 'all' || itemCategory === selectedCategory) {
+              if (selectedCategory === itemCategory) {
                 item.style.display = 'block';
                 visibleCount++;
               } else {
@@ -122,8 +275,7 @@ const sortedProducts = [...products].sort((a, b) => b.sold - a.sold);
               }
             });
 
-            // Update jumlah produk & empty state
-            productCount.textContent = `${visibleCount} Produk`;
+            // Tampilkan/sembunyikan empty state
             if (visibleCount === 0) {
               emptyState.classList.remove('hidden');
               productGrid.classList.add('hidden');
@@ -131,7 +283,35 @@ const sortedProducts = [...products].sort((a, b) => b.sold - a.sold);
               emptyState.classList.add('hidden');
               productGrid.classList.remove('hidden');
             }
+
+            // Scroll ke section produk
+            productGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
           });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', (e) => {
+          const searchTerm = e.target.value.toLowerCase();
+          let visibleCount = 0;
+          
+          productItems.forEach(item => {
+            const productName = item.querySelector('h3').textContent.toLowerCase();
+            if (productName.includes(searchTerm)) {
+              item.style.display = 'block';
+              visibleCount++;
+            } else {
+              item.style.display = 'none';
+            }
+          });
+
+          if (visibleCount === 0 && searchTerm !== '') {
+            emptyState.classList.remove('hidden');
+            productGrid.classList.add('hidden');
+          } else {
+            emptyState.classList.add('hidden');
+            productGrid.classList.remove('hidden');
+          }
         });
       });
     </script>
